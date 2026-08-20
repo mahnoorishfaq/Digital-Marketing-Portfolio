@@ -10,7 +10,7 @@
 
 ## 👋 About
 
-I'm **Mahnoor Ishfaq**, a final-year BS Artificial Intelligence student at **Government College University Lahore**, combining a strong analytical/technical foundation with hands-on digital marketing expertise. I bring an AI-driven, data-first mindset into campaign strategy — reading consumer behavior patterns and optimizing for measurable results rather than guesswork.
+I'm **Mahnoor Ishfaq**, a final-year BS Artificial Intelligence student at **Government College University Lahore**, combining a strong analytical/technical foundation with hands-on digital marketing expertise. I bring an AI-driven, data-first mindset into campaign strategy reading consumer behavior patterns and optimizing for measurable results rather than guesswork.
 
 **Meta & Google Certified · Open for Freelance Projects**
 
@@ -20,7 +20,6 @@ I'm **Mahnoor Ishfaq**, a final-year BS Artificial Intelligence student at **Gov
 
 - Social Media Marketing & Strategy
 - Meta (Facebook/Instagram) Advertising
-- Brand Positioning & Public Relations
 - Campaign Planning & Audience Analytics
 - Community Growth & Event Promotion
 - Content Strategy & Copywriting
