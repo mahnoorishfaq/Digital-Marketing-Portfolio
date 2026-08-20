@@ -1,4 +1,3 @@
-<script>
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -18,4 +17,3 @@
       cycleEl.classList.remove('out');
     }, 420);
   }, 2400);
-</script>
