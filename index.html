@@ -6,7 +6,7 @@
 <title> Mahnoor Ishfaq — Digital Marketing Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-</head>
+<link rel="stylesheet" href="Styles.css">
 <body>
 <div class="title-bar">DIGITAL MARKETING PORTFOLIO</div>
 <nav>
@@ -281,28 +281,6 @@
     <span>LAHORE, PAKISTAN</span>
   </div>
 </footer>
-
-<script>
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:0.15});
-  revealEls.forEach(el=>io.observe(el));
-
-  const words = ["profit.", "customers.", "followers.", "growth."];
-  let wi = 0;
-  const cycleEl = document.getElementById('cycleWord');
-  setInterval(()=>{
-    cycleEl.classList.add('out');
-    setTimeout(()=>{
-      wi = (wi + 1) % words.length;
-      cycleEl.textContent = words[wi];
-      cycleEl.classList.remove('out');
-    }, 420);
-  }, 2400);
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
