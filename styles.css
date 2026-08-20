@@ -1,4 +1,3 @@
-<style>
   :root{
     --ivory:#FAF8F3;
     --ink:#161C22;
@@ -238,4 +237,3 @@
     *{animation:none !important; transition:none !important;}
     .reveal{opacity:1; transform:none;}
   }
-</style>
