@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Mahnoor Ishfaq — Digital Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF8F3;
+    --ink:#161C22;
+    --ink-soft:#3A424B;
+    --sage:#6E8B74;
+    --sage-deep:#4C6650;
+    --coral:#E8583A;
+    --line:#DEDACD;
+    --card:#FFFFFF;
+    --radius:2px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--sage); color:var(--ivory);}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .title-bar{
+  position:fixed; top:0; left:0; right:0;
+  background:var(--ink); color:var(--ivory); text-align:center;
+  padding:8px 12px; font-family:'IBM Plex Mono'; font-size:12px;
+  letter-spacing:0.06em; z-index:60;
+  overflow:hidden;
+  box-shadow:0 0 20px rgba(232,88,58,0.15);
+}
+.title-bar::before{
+  content:'';
+  position:absolute; top:0; left:-100%; width:50%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation:shimmer 5s ease-in-out infinite;
+}
+@keyframes shimmer{
+  0%{ left:-100%; }
+  60%,100%{ left:150%; }
+}
+.title-bar span{color:var(--coral);}
+  nav{
+    position:fixed; top:29px; left:0; right:0; z-index:50;
+    background:rgba(250,248,243,0.85); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:0.12em; font-weight:500;}
+  .logo span{color:var(--coral);}
+  .nav-links{display:flex; gap:32px; list-style:none;}
+  .nav-links a{
+    font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-soft); position:relative; padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background:var(--coral); transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-links a:hover{color:var(--ink);}
+  @media (max-width:820px){ .nav-links{display:none;} }
+
+  .hero{
+    position:relative; min-height:100vh; display:flex; flex-direction:column;
+    justify-content:center; padding-top:130px; overflow:hidden;
+  }
+  .orb{position:absolute; border-radius:50%; filter:blur(70px); opacity:0.5; pointer-events:none; z-index:0;}
+  .orb-sage{
+    width:460px; height:460px; top:-120px; right:-80px;
+    background:radial-gradient(circle, var(--sage) 0%, transparent 70%);
+    animation:float1 16s ease-in-out infinite;
+  }
+  .orb-coral{
+    width:340px; height:340px; bottom:-140px; left:6%;
+    background:radial-gradient(circle, var(--coral) 0%, transparent 70%);
+    animation:float2 20s ease-in-out infinite;
+  }
+  .orb-sage-soft{
+    width:260px; height:260px; top:40%; left:36%;
+    background:radial-gradient(circle, var(--sage-deep) 0%, transparent 70%);
+    opacity:0.28; animation:float3 24s ease-in-out infinite;
+  }
+  @keyframes float1{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-50px,40px) scale(1.12);} }
+  @keyframes float2{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(40px,-30px) scale(0.9);} }
+  @keyframes float3{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(30px,25px) scale(1.15);} }
+
+  .hero .wrap{position:relative; z-index:1;}
+  .eyebrow{
+    font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--sage-deep); display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--coral);}
+  .hero h1{ font-size:clamp(40px, 7vw, 84px); line-height:1.02; max-width:920px; letter-spacing:-0.02em; }
+  .cycle-word{
+    font-style:italic; color:var(--sage-deep); font-weight:500;
+    display:inline-block; min-width:1px;
+    transition:opacity .5s ease, transform .5s ease, filter .5s ease;
+    text-shadow:0 0 20px rgba(76,102,80,0.25);
+  }
+  .cycle-word.out{ opacity:0; transform:translateY(10px); filter:blur(8px); }
+  .hero p.sub{ max-width:540px; margin-top:26px; font-size:17px; color:var(--ink-soft); }
+  .cta-row{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.04em;
+    padding:14px 26px; border-radius:var(--radius); display:inline-flex; align-items:center; gap:10px;
+    transition:transform .3s ease, background .3s ease, color .3s ease;
+  }
+  .btn-fill{background:var(--ink); color:var(--ivory);}
+  .btn-fill:hover{
+  background:var(--coral); transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(232,88,58,0.35);
+}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{
+  background:var(--ink); color:var(--ivory); transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(22,28,34,0.15);
+}
+
+  .scroll-cue{
+    position:absolute; bottom:36px; left:32px; font-family:'IBM Plex Mono'; font-size:11px;
+    color:var(--ink-soft); display:flex; align-items:center; gap:10px; letter-spacing:0.08em; z-index:1;
+  }
+  .scroll-cue .bar{width:1px; height:34px; background:var(--ink-soft); position:relative; overflow:hidden;}
+  .scroll-cue .bar::after{
+    content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--coral);
+    animation:cue 1.8s ease-in-out infinite;
+  }
+  @keyframes cue{ 0%{top:-100%;} 60%{top:100%;} 100%{top:100%;} }
+
+  section{padding:120px 0;}
+  .label-row{display:flex; align-items:baseline; gap:18px; margin-bottom:56px;}
+  .label-num{
+  font-family:'IBM Plex Mono'; font-size:12px; color:var(--coral);
+  position:relative; padding-left:14px;
+}
+.label-num::before{
+  content:''; position:absolute; left:0; top:50%; transform:translateY(-50%);
+  width:6px; height:6px; border-radius:50%; background:var(--coral);
+  box-shadow:0 0 8px 2px rgba(232,88,58,0.5);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{ opacity:1; }
+  50%{ opacity:0.4; }
+}
+  .label-row h2{font-size:clamp(28px,4vw,42px);}
+  .label-line{flex:1; height:1px; background:var(--line);}
+
+  /* about */
+  .audit-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px;}
+  @media (max-width:800px){ .audit-grid{grid-template-columns:1fr;} }
+  .audit-grid p{color:var(--ink-soft); font-size:16px; margin-bottom:16px; max-width:480px;}
+  .highlight-box{
+    border:1px solid var(--line); background:var(--card); padding:26px 28px; border-radius:var(--radius);
+  }
+  .highlight-box h3{font-size:15px; font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:14px; color:var(--sage-deep);}
+  .highlight-box ul{list-style:none;}
+  .highlight-box li{
+    font-size:14.5px; color:var(--ink-soft); padding:10px 0; border-top:1px solid var(--line);
+  }
+  .highlight-box li:first-child{border-top:none;}
+  .highlight-box li b{color:var(--ink); font-weight:600;}
+
+  /* certifications */
+  .cert-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:900px){ .cert-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .cert-grid{grid-template-columns:1fr;} }
+  .cert-card{
+    border:1px solid var(--line); background:var(--card); padding:24px 22px; border-radius:var(--radius);
+    transition:border-color .3s, transform .3s, box-shadow .3s;
+    display:block; cursor:pointer;
+  }
+  .cert-card:hover{
+  border-color:var(--sage); transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(22,28,34,0.06), 0 0 0 1px rgba(110,139,116,0.3);
+}
+  .cert-issuer{font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.06em; color:var(--coral); text-transform:uppercase;}
+  .cert-name{font-family:'Fraunces'; font-size:19px; margin-top:10px; line-height:1.2;}
+  .cert-meta{font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-soft); margin-top:14px; opacity:0.75;}
+
+  /* experience */
+  .exp-item{
+    border-top:1px solid var(--line); padding:36px 0; display:grid;
+    grid-template-columns:180px 1fr; gap:32px;
+  }
+  .exp-item:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:700px){ .exp-item{grid-template-columns:1fr; gap:10px;} }
+  .exp-period{font-family:'IBM Plex Mono'; font-size:12px; color:var(--coral); padding-top:4px;}
+  .exp-role{font-size:21px; margin-bottom:8px;}
+  .exp-org{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--sage-deep); margin-bottom:12px;}
+  .exp-desc{color:var(--ink-soft); font-size:15px; max-width:560px;}
+
+  /* projects */
+  .case{
+    border-top:1px solid var(--line); padding:44px 0; display:grid;
+    grid-template-columns:100px 1.3fr 1fr; gap:32px; align-items:start;
+    transition:background .35s ease;
+  }
+  .case:last-child{border-bottom:1px solid var(--line);}
+  .case:hover{background:rgba(110,139,116,0.05);}
+  @media (max-width:800px){ .case{grid-template-columns:1fr; gap:14px;} }
+  .case-id{font-family:'IBM Plex Mono'; font-size:12px; color:var(--coral); padding-top:6px;}
+  .case-title{font-size:22px; margin-bottom:10px;}
+  .case-desc{color:var(--ink-soft); font-size:15px; max-width:440px;}
+  .case-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+  .case-tags span{font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-soft);}
+  .case-stat{text-align:right;}
+  @media (max-width:800px){ .case-stat{text-align:left;} }
+  .case-stat .num{font-family:'Fraunces'; font-size:38px; color:var(--sage-deep); display:block;}
+  .case-stat .tag{font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-soft); text-transform:uppercase;}
+  .case-note{font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--ink-soft); opacity:0.7; margin-top:6px;}
+
+  /* contact */
+  .contact{text-align:left;}
+  .contact h2{font-size:clamp(34px,6vw,64px); max-width:680px;}
+  .contact-email{
+    font-family:'IBM Plex Mono'; font-size:clamp(18px,3vw,26px); margin-top:34px; display:inline-block;
+    border-bottom:1px solid var(--ink); padding-bottom:6px; transition:color .3s, border-color .3s;
+  }
+  .contact-email:hover{color:var(--coral); border-color:var(--coral);}
+  .contact-meta{display:flex; gap:28px; margin-top:56px; flex-wrap:wrap;}
+  .contact-meta a{font-family:'IBM Plex Mono'; font-size:12px; color:var(--ink-soft); letter-spacing:0.05em;}
+  .contact-meta a:hover{color:var(--coral);}
+  footer{padding:36px 0 50px; border-top:1px solid var(--line); margin-top:60px;}
+  footer .wrap{display:flex; justify-content:space-between; font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-soft); flex-wrap:wrap; gap:10px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+    .reveal{opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+<div class="title-bar">DIGITAL MARKETING PORTFOLIO</div>
+<nav>
+  <div class="nav-inner">
+    <div class="logo">MAHNOOR ISHFAQ<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="orb orb-sage"></div>
+  <div class="orb orb-coral"></div>
+  <div class="orb orb-sage-soft"></div>
+  <div class="wrap">
+    <div class="eyebrow">Meta &amp; Google Certified · Open for Freelance Projects</div>
+    <h1>Turning views into<br><span class="cycle-word" id="cycleWord">traffic.</span></h1>
+    <p class="sub">Final-year AI student and certified digital marketer — I combine an analytical, data-driven mindset with creative campaign strategy to build online presences that convert.</p>
+    <div class="cta-row">
+      <a href="#work" class="btn btn-fill">View projects →</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="bar"></div>SCROLL</div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="label-row reveal">
+      <span class="label-num">01</span>
+      <h2>About</h2>
+      <div class="label-line"></div>
+    </div>
+    <div class="audit-grid">
+      <div class="reveal">
+        <p>I'm Mahnoor Ishfaq, a final-year BS Artificial Intelligence student at Government College University Lahore, blending a strong technical foundation with professional digital marketing expertise.</p>
+        <p>My core academic focus is AI and machine learning, but I bring that same analytical edge into marketing — combining creative campaign strategy with data-driven decision-making to build impactful online presences and high-converting strategies.</p>
+        <p>Leadership has shaped my growth just as much as certification. Three years of executive roles at the GCU-ACM Student Chapter taught me how to manage teams, campaigns, and large-scale events with precision.</p>
+      </div>
+      <div class="highlight-box reveal">
+        <h3>Why my background works</h3>
+        <ul>
+          <li><b>Analytical mindset</b> — using an AI background to read consumer behavior patterns and optimize performance metrics</li>
+          <li><b>Certified expertise</b> — Meta Social Media Marketing Professional Certificate and 6+ more credentials</li>
+          <li><b>Proven leadership</b> — 3 years managing media, communications, and student initiatives at GCU-ACM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="label-row reveal">
+      <span class="label-num">02</span>
+      <h2>Certifications</h2>
+      <div class="label-line"></div>
+    </div>
+    <div class="cert-grid">
+      <a class="cert-card reveal" href="https://coursera.org/verify/professional-cert/U2TDV4MVTQTC" target="_blank" rel="noopener noreferrer">
+        <div class="cert-issuer">Coursera</div>
+        <div class="cert-name">Meta Social Media Marketing </div>
+        <div class="cert-meta">Issue date: Jun 28, 2023 </div>
+      </a>
+      <a class="cert-card reveal" href="https://coursera.org/verify/YRHU8YYC6E96" target="_blank" rel="noopener noreferrer">
+        <div class="cert-issuer">Coursera</div>
+        <div class="cert-name">Introduction to Social Media Marketing</div>
+        <div class="cert-meta">Issue date: May 6, 2023</div>
+      </a>
+      <a class="cert-card reveal" href="https://coursera.org/verify/UFYCXPKVRVHN" target="_blank" rel="noopener noreferrer">
+        <div class="cert-issuer">Coursera</div>
+        <div class="cert-name">Advertising with Meta</div>
+        <div class="cert-meta">Issue date: May 15, 2023</div>
+      </a>
+      <a class="cert-card reveal" href="https://coursera.org/verify/PJNJLQMNP3ZX" target="_blank" rel="noopener noreferrer">
+        <div class="cert-issuer">Coursera</div>
+        <div class="cert-name">Social Media Managment</div>
+        <div class="cert-meta">Issue date:May 7, 2023 </div>
+      </a>
+      <a class="cert-card reveal" href="https://coursera.org/verify/HTF5XK5NET4M" target="_blank" rel="noopener noreferrer">
+        <div class="cert-issuer">Coursera</div>
+        <div class="cert-name">Fundamentals of Social Media Advertising</div>
+        <div class="cert-meta">Issue date: May 10, 2023 </div>
+      </a>
+      <a class="cert-card reveal" href="https://coursera.org/verify/XZPYDUSGKYZT" target="_blank" rel="noopener noreferrer">
+        <div class="cert-issuer">Coursera</div>
+        <div class="cert-name">Measure and Optimize Social Media Marketing Campaigns</div>
+        <div class="cert-meta">Issue date: May 25, 2023</div>
+      </a>
+      <a class="cert-card reveal" href="https://coursera.org/verify/ZHNMVM7XGXBZ" target="_blank" rel="noopener noreferrer">
+        <div class="cert-issuer">Coursera</div>
+        <div class="cert-name">Meta Social Media Marketing Capstone</div>
+        <div class="cert-meta">Issue date: Jun 28, 2023</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="label-row reveal">
+      <span class="label-num">03</span>
+      <h2>Experience &amp; Leadership</h2>
+      <div class="label-line"></div>
+    </div>
+     <div class="exp-item reveal">
+      <div class="exp-period">1 YEAR</div>
+      <div>
+        <div class="exp-role">Social Media Head</div>
+        <div class="exp-org">GCU-ACM STUDENT CHAPTER</div>
+        <div class="exp-desc">As the Media Head for the GCU ACM Student Chapter, I led digital outreach and managed our public relations by designing promotional content and driving social media engagement for major technical workshops and events. This role strengthened my digital marketing portfolio by allowing me to execute targeted visibility campaigns, oversee brand presentation across online platforms, and build a strong, active student community.</div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-period">1 YEAR</div>
+      <div>
+        <div class="exp-role">Information Secretary</div>
+        <div class="exp-org">GCU-ACM STUDENT CHAPTER</div>
+        <div class="exp-desc">As the Information Secretary for the GCU ACM Student Chapter, I managed official communications, drafted event proposals, and handled society correspondence to keep members informed and engaged. This role strengthened my digital marketing and communication skills through executing targeted promotional campaigns, managing social outreach, and driving audience engagement for technical workshops.</div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-period">ONGOING</div>
+      <div>
+        <div class="exp-role">Campus Ambassador</div>
+        <div class="exp-org">MANAFA TECHNOLOGIES</div>
+        <div class="exp-desc">As a Campus Ambassador for Manafa Technologies, I served as the primary bridge between the Saudi-based fintech crowdfunding platform and my university, spearheading digital outreach and managing campus-wide engagement. I drove our marketing strategy by organizing talent drives, promoting brand initiatives across student networks, and executing digital campaigns to boost visibility. This role directly sharpened my digital marketing skills in community building, social outreach, and event promotion, which I leverage to drive user acquisition and brand awareness.</div>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="label-row reveal">
+      <span class="label-num">04</span>
+      <h2>Featured Projects</h2>
+      <div class="label-line"></div>
+    </div>
+
+    <!-- PROJECT 01 -->
+    <div class="case reveal">
+      <div class="case-id">PROJECT 01</div>
+      <div>
+        <div class="case-title">GCU ACM Media Head | Digital Marketing & Public Relation</div>
+        <div class="case-desc"> 
+          <ul>
+            <li>Spearheaded digital outreach and managed public relations for the student chapter, overseeing brand presentation and online visibility across all platforms.</li>
+            <li>Designed and executed targeted promotional campaigns and visual content for major technical workshops, significantly boosting audience engagement and event participation.</li>
+            <li>Built and managed an active student community by driving social media strategy and coordinating communication lines for chapter initiatives.</li>
+          </ul>
+        </div>
+        <div class="case-tags">
+          <span>Digital Marketing & PR</span>
+          <span>Brand Management</span>
+          <span>Event Promotion</span>
+        </div>
+      </div>
+      <div class="case-stat">
+        <span class="num">+40%</span>
+        <span class="tag">Organic engagement, 30 days</span>
+        <div class="case-note">Metrics based on growth in social media interactions and event registration rates following campaign optimization</div>
+      </div>
+    </div>
+
+    <!-- PROJECT 02 -->
+    <div class="case reveal">
+      <div class="case-id">PROJECT 02</div>
+      <div>
+        <div class="case-title">Manafa Technologies | Campus Ambassador & Fintech Outreach</div>
+        <div class="case-desc"> 
+          <ul>
+            <li>Served as the official corporate-student liaison for a leading Saudi-based fintech and crowdfunding platform, driving regional brand awareness on campus.</li>
+            <li>Planned and executed the high-impact Manafa Talent Drive and recruitment day, managing event logistics, test tracking, and student engagement.</li>
+            <li>Spearheaded digital outreach campaigns to promote alternative investment and crowdfunding education, building a robust student-ambassador network.</li>
+          </ul>
+        </div>
+        <div class="case-tags">
+          <span>Fintech Marketing</span>
+          <span>Community Growth</span>
+          <span>Corporate Relations</span>
+        </div>
+      </div>
+      <div class="case-stat">
+        <span class="num">+60%</span>
+        <span class="tag">Student Registrations</span>
+        <div class="case-note">Measured via recruitment drive sign-ups and digital platform engagement metrics.</div>
+      </div>
+    </div>
+
+    <!-- PROJECT 03 -->
+    <div class="case reveal">
+      <div class="case-id">PROJECT 03</div>
+      <div>
+        <div class="case-title">Personal Brand - Master Lace and Piko Center | Marketing & Brand Strategy</div>
+        <div class="case-desc"> 
+          <ul>
+            <li>Spearheaded digital marketing initiatives and brand positioning for a specialty clothing accessories and tailoring brand, elevating online visibility across social media platforms.</li>
+            <li>Curated creative product displays and promotional content highlighting intricate bead, pearl, and lace collections to capture target consumer interest.</li>
+            <li>Optimized digital customer engagement channels, driving organic local reach and strengthening direct consumer connections for retail collections.</li>
+          </ul>
+        </div>
+        <div class="case-tags">
+          <span>Social Media Marketing</span>
+          <span>Brand Positioning</span>
+          <span>Retail Growth</span>
+        </div>
+      </div>
+      <div class="case-stat">
+        <span class="num">+50%</span>
+        <span class="tag">Digital Reach, 30 days</span>
+        <div class="case-note">Metrics driven by targeted content upgrades and enhanced social media visibility strategies.</div>
+      </div>
+    </div>
+
+    <!-- PROJECT 04 -->
+    <div class="case reveal">
+      <div class="case-id">PROJECT 04</div>
+      <div>
+        <div class="case-title">Digital Marketing Campaign | Social Media Strategy & Growth</div>
+        <div class="case-desc"> 
+          <ul>
+            <li>Designed and executed a multi-channel digital marketing campaign focused on increasing brand awareness, audience interaction, and lead generation.</li>
+            <li>Analyzed audience demographics and engagement metrics to optimize posting schedules, copywriting, and visual assets for maximum reach.</li>
+            <li>Implemented performance-driven content funnels that successfully converted casual social media traffic into active brand followers and community participants.</li>
+          </ul>
+        </div>
+        <div class="case-tags">
+          <span>Campaign Strategy</span>
+          <span>Social Media Analytics</span>
+          <span>Lead Generation</span>
+        </div>
+      </div>
+      <div class="case-stat">
+        <span class="num">+45%</span>
+        <span class="tag">Engagement Rate, 30 Days</span>
+        <div class="case-note">Achieved via optimized content scheduling, audience targeting, and data-driven creative adjustments.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="label-row reveal">
+      <span class="label-num">05</span>
+      <h2>Get In Touch</h2>
+      <div class="label-line"></div>
+    </div>
+    <h3 class="reveal">Caught your eye? Let’s make your brand next.</h3>
+    <p>Whether you want to discuss a campaign, collaboration, or a marketing role, my inbox is always open.</p>
+    <a href="mailto:mahnoor.ishfaq.pk@gmail.com" class="contact-email reveal">mahnoor.ishfaq.pk@gmail.com</a>
+    <div class="contact-meta reveal">
+      <a href="https://www.linkedin.com/in/mahnoor-ishfaq-/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/195HFj5dnZELFyN-Mizs-2gMXxEtFKwfO/preview" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>MAHNOOR ISHFAQ — DIGITAL MARKETING EXPERT</span>
+    <span>LAHORE, PAKISTAN</span>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  const words = ["profit.", "customers.", "followers.", "growth."];
+  let wi = 0;
+  const cycleEl = document.getElementById('cycleWord');
+  setInterval(()=>{
+    cycleEl.classList.add('out');
+    setTimeout(()=>{
+      wi = (wi + 1) % words.length;
+      cycleEl.textContent = words[wi];
+      cycleEl.classList.remove('out');
+    }, 420);
+  }, 2400);
+</script>
+
+</body>
+</html>
